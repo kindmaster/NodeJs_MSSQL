@@ -1,0 +1,10 @@
+# Application
+NODE_ENV=development
+PORT=3000
+
+# Database
+SQL_DRIVER="SQL Server"
+SQL_SERVER="서버주소"
+SQL_DATABASE="db명"
+SQL_UID="id"
+SQL_PWD="pw"
