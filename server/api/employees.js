@@ -18,6 +18,21 @@ const config = {
 const pool = new mssql.ConnectionPool(config);
 
 //----------- 저장 프로시즈 
+// req.body.id
+router.post('/login', async (req, res) => {
+    try {
+        await pool.connect();
+        const result = await pool.request()
+            .input('ID', req.body.ID)
+            .input('PW', req.body.PW)
+            .execute(`BNlogin`);
+       const Token = {Token:result.recordset[0].Token};
+        // console.log(result.recordset[0].Token)
+        res.json(Token);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 router.get('/search', async (req, res) => {
     try {
         await pool.connect();
